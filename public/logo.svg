@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="Knosis emblem">
+  <defs>
+    <linearGradient id="k-stroke" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f2ede4"/>
+      <stop offset="1" stop-color="#d4c39a"/>
+    </linearGradient>
+    <radialGradient id="k-halo" cx="0.5" cy="0.55" r="0.5">
+      <stop offset="0" stop-color="#d4c39a" stop-opacity="0.22"/>
+      <stop offset="0.6" stop-color="#d4c39a" stop-opacity="0.05"/>
+      <stop offset="1" stop-color="#d4c39a" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="k-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3.5"/>
+    </filter>
+  </defs>
+  <!-- soft halo -->
+  <circle cx="60" cy="64" r="52" fill="url(#k-halo)"/>
+  <!-- blurred glow layer -->
+  <g filter="url(#k-glow)" opacity="0.55" fill="none" stroke="#d4c39a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M26 42 L60 78 L94 42"/>
+    <path d="M38 30 L60 53 L82 30"/>
+  </g>
+  <!-- crisp emblem -->
+  <g fill="none" stroke="url(#k-stroke)" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M26 42 L60 78 L94 42" stroke-width="1.25"/>
+    <path d="M38 30 L60 53 L82 30" stroke-width="1" opacity="0.55"/>
+  </g>
+  <!-- focal point beneath the apex -->
+  <circle cx="60" cy="92" r="1.6" fill="#d4c39a"/>
+  <circle cx="60" cy="92" r="4" fill="#d4c39a" opacity="0.18"/>
+</svg>
