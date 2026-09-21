@@ -22,6 +22,32 @@ body {
   font-feature-settings: "kern" 1, "liga" 1;
 }
 
+@keyframes text-sweep {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: 0% 0;
+  }
+}
+
+.text-sweep {
+  background-image: linear-gradient(
+    90deg,
+    var(--color-ivory-dim) 0%,
+    var(--color-ivory-dim) 42%,
+    var(--color-gold) 50%,
+    var(--color-ivory-dim) 58%,
+    var(--color-ivory-dim) 100%
+  );
+  background-size: 300% 100%;
+  background-repeat: no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: text-sweep 6s linear infinite;
+}
+
 ::selection {
   background: rgba(212, 195, 154, 0.25);
   color: #f2ede4;

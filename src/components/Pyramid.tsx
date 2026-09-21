@@ -11,15 +11,23 @@ export default function Pyramid() {
 
   return (
     <section className="relative mx-auto w-full max-w-6xl px-6 py-28 lg:py-40">
-      <motion.p
+      <motion.div
         initial={{ opacity: 0, y: 12 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-80px' }}
         transition={{ duration: 0.8, ease }}
-        className="mb-16 text-center font-body text-[11px] uppercase tracking-[0.35em] text-gold/70 lg:mb-24"
+        className="mx-auto mb-16 flex flex-col items-center text-center lg:mb-24"
       >
-        Six levels
-      </motion.p>
+        <p className="font-body text-lg uppercase tracking-[0.3em] text-gold/80 sm:text-xl">
+          Six levels
+        </p>
+        <p className="mt-4 font-body text-[11px] uppercase tracking-[0.3em] text-ivory-dim">
+          Based on Peer-Reviewed Research
+        </p>
+        <p className="text-sweep mt-3 font-body text-[13px] uppercase tracking-[0.3em]">
+          Choose a Level On the Pyramid to Learn and Practice
+        </p>
+      </motion.div>
 
       <motion.div
         initial={{ opacity: 0, y: 24 }}
