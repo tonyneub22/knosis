@@ -1,12 +1,11 @@
 import { lazy, Suspense } from 'react'
 import { Route, Routes, Navigate } from 'react-router'
-import { levels } from './data/levels'
 import Home from './pages/Home'
-import LevelPage from './pages/LevelPage'
 import ScrollToTop from './components/ScrollToTop'
 import Layer1Shell from './components/layer1/Layer1Shell'
+import LayerShell from './components/layers/LayerShell'
 
-// Layer 1 pages are code-split so the landing page stays light.
+// Layer pages are code-split so the landing page stays light.
 const Overview = lazy(() => import('./pages/layer1/Overview'))
 const ChooseCase = lazy(() => import('./pages/layer1/ChooseCase'))
 const Instructions = lazy(() => import('./pages/layer1/Instructions'))
@@ -15,7 +14,18 @@ const Severity = lazy(() => import('./pages/layer1/Severity'))
 const Feedback = lazy(() => import('./pages/layer1/Feedback'))
 const Results = lazy(() => import('./pages/layer1/Results'))
 
+const Layer2Overview = lazy(() => import('./pages/layer2/Overview'))
+const Layer3Overview = lazy(() => import('./pages/layer3/Overview'))
+const Layer4Overview = lazy(() => import('./pages/layer4/Overview'))
+const Layer5Overview = lazy(() => import('./pages/layer5/Overview'))
+const Layer6Overview = lazy(() => import('./pages/layer6/Overview'))
+
 const LAYER1_PATH = '/structural-conditions'
+const LAYER2_PATH = '/work-system'
+const LAYER3_PATH = '/continuity-and-transitions'
+const LAYER4_PATH = '/encounter'
+const LAYER5_PATH = '/case-itself'
+const LAYER6_PATH = '/reasoning-moment'
 
 export default function App() {
   return (
@@ -37,12 +47,23 @@ export default function App() {
             <Route path="*" element={<Navigate to={LAYER1_PATH} replace />} />
           </Route>
 
-          {/* Remaining layers — placeholder pages until their content arrives */}
-          {levels
-            .filter((level) => level.path !== LAYER1_PATH)
-            .map((level) => (
-              <Route key={level.id} path={level.path} element={<LevelPage level={level} />} />
-            ))}
+          {/* Layers 2–6 — overview pages only, no case flow yet */}
+          <Route path={LAYER2_PATH} element={<LayerShell />}>
+            <Route index element={<Layer2Overview />} />
+          </Route>
+          <Route path={LAYER3_PATH} element={<LayerShell />}>
+            <Route index element={<Layer3Overview />} />
+          </Route>
+          <Route path={LAYER4_PATH} element={<LayerShell />}>
+            <Route index element={<Layer4Overview />} />
+          </Route>
+          <Route path={LAYER5_PATH} element={<LayerShell />}>
+            <Route index element={<Layer5Overview />} />
+          </Route>
+          <Route path={LAYER6_PATH} element={<LayerShell />}>
+            <Route index element={<Layer6Overview />} />
+          </Route>
+
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </Suspense>

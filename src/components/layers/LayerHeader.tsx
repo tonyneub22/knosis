@@ -1,11 +1,11 @@
 import { motion } from 'motion/react'
 import Logo from '../Logo'
-import { layer1 } from '../../data/layer1Factors'
+import type { LayerMeta } from '../../data/factorTypes'
 
 const ease = [0.22, 1, 0.36, 1] as const
 
-/** The existing level-page header (Logo · "Level 01" · title), plus the Layer 1 subtitle. */
-export default function Layer1Header() {
+/** Logo · "Level 0N" eyebrow · title (display serif) · subtitle — shared by every layer's overview page. */
+export default function LayerHeader({ layer }: { layer: LayerMeta }) {
   return (
     <motion.header
       initial={{ opacity: 0, y: 16 }}
@@ -15,16 +15,16 @@ export default function Layer1Header() {
     >
       <Logo size={56} />
       <span className="mt-12 font-body text-[11px] uppercase tracking-[0.35em] text-gold/70">
-        Level {String(layer1.number).padStart(2, '0')}
+        Level {String(layer.number).padStart(2, '0')}
       </span>
       <h1
         className="mt-5 font-display font-light leading-tight tracking-[0.06em] text-ivory"
         style={{ fontSize: 'clamp(2.5rem, 6vw, 4.5rem)' }}
       >
-        {layer1.title}
+        {layer.title}
       </h1>
       <p className="mt-4 max-w-2xl font-display text-lg font-light leading-snug tracking-[0.04em] text-ivory-dim sm:text-xl">
-        {layer1.subtitle}
+        {layer.subtitle}
       </p>
     </motion.header>
   )

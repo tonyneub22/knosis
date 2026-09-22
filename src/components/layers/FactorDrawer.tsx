@@ -1,9 +1,10 @@
 import type { ReactNode } from 'react'
 import Drawer from '../ui/Drawer'
-import { Inline } from './Inline'
-import { layer1References, type Factor } from '../../data/layer1Factors'
+import { Inline } from '../shared/Inline'
+import { references } from '../../data/references'
+import type { Factor, LayerMeta } from '../../data/factorTypes'
 
-type Props = { factor: Factor | null; onClose: () => void }
+type Props = { factor: Factor | null; onClose: () => void; layer: LayerMeta }
 
 function Section({ label, children }: { label: string; children: ReactNode }) {
   return (
@@ -14,9 +15,12 @@ function Section({ label, children }: { label: string; children: ReactNode }) {
   )
 }
 
-export default function FactorDrawer({ factor, onClose }: Props) {
+/** Right-side drawer for a factor's full evidence. Same four sections and close behavior for every layer. */
+export default function FactorDrawer({ factor, onClose, layer }: Props) {
+  const eyebrow = factor ? `Layer ${layer.number} · ${layer.title}` : undefined
+
   return (
-    <Drawer open={factor !== null} onClose={onClose} label={factor ? factor.title : 'Factor'} eyebrow={factor ? 'Layer 1 · Structural conditions' : undefined} title={factor?.title}>
+    <Drawer open={factor !== null} onClose={onClose} label={factor ? factor.title : 'Factor'} eyebrow={eyebrow} title={factor?.title}>
       {factor && (
         <div>
           <Section label="What it is / mechanism">
@@ -41,9 +45,9 @@ export default function FactorDrawer({ factor, onClose }: Props) {
                   <span className="w-9 shrink-0 font-body text-[11px] tracking-[0.2em] text-gold/70">[{s.ref}]</span>
                   <span className="flex flex-col gap-1">
                     <span className="text-ivory">{s.label}</span>
-                    {layer1References[s.ref] && (
+                    {references[s.ref] && (
                       <span className="text-[13px] leading-relaxed text-ivory-dim">
-                        <Inline text={layer1References[s.ref]} />
+                        <Inline text={references[s.ref]} />
                       </span>
                     )}
                   </span>

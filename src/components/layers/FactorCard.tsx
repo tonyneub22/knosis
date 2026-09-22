@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { motion } from 'motion/react'
 import Card from '../ui/Card'
-import type { Factor } from '../../data/layer1Factors'
+import type { Factor } from '../../data/factorTypes'
 
 const ease = [0.22, 1, 0.36, 1] as const
 

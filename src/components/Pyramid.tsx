@@ -10,7 +10,7 @@ export default function Pyramid() {
   const [hovered, setHovered] = useState<string | null>(null)
 
   return (
-    <section className="relative mx-auto w-full max-w-6xl px-6 py-28 lg:py-40">
+    <section id="pyramid" className="relative mx-auto w-full max-w-6xl px-6 py-28 lg:py-40">
       <motion.div
         initial={{ opacity: 0, y: 12 }}
         whileInView={{ opacity: 1, y: 0 }}

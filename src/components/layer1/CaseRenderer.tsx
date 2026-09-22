@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import type { CaseBlock, CaseDoc } from '../../content/cases/types'
-import { Inline } from './Inline'
+import { Inline } from '../shared/Inline'
 
 /** Typesets a CaseDoc: display-serif headings, site-styled tables, teaching notes set apart. */
 export default function CaseRenderer({ doc }: { doc: CaseDoc }) {
