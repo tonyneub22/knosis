@@ -101,6 +101,7 @@ export default function Feedback() {
     setSubmitting(true)
     setError(null)
     const input: SubmissionInput = {
+      layer: 'structural-conditions',
       caseId: doc.id,
       severityLevel: severity,
       notes: readNotes(doc.id),
