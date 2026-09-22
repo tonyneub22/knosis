@@ -70,3 +70,140 @@ body {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ---------- Layer content pages ---------- */
+
+/* Specular gradient border, echoing the pyramid band stroke. */
+.card-specular {
+  position: relative;
+  isolation: isolate;
+  background:
+    linear-gradient(180deg, rgba(242, 237, 228, 0.045), rgba(242, 237, 228, 0.008) 55%, rgba(242, 237, 228, 0)),
+    var(--color-ink-2);
+}
+.card-specular::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(242, 237, 228, 0.06) 0%,
+    rgba(242, 237, 228, 0.95) 28%,
+    rgba(212, 195, 154, 0.55) 50%,
+    rgba(242, 237, 228, 0.85) 72%,
+    rgba(242, 237, 228, 0.06) 100%
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0.32;
+  transition: opacity 0.45s var(--ease-luxe);
+  pointer-events: none;
+}
+.card-specular:hover::before,
+.card-specular:focus-visible::before,
+.card-specular[data-active="true"]::before {
+  opacity: 1;
+}
+.card-specular::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(180deg, rgba(212, 195, 154, 0.16), rgba(212, 195, 154, 0.04) 60%, rgba(212, 195, 154, 0.01));
+  opacity: 0;
+  transition: opacity 0.45s var(--ease-luxe);
+  pointer-events: none;
+  z-index: -1;
+}
+.card-specular:hover::after,
+.card-specular[data-active="true"]::after {
+  opacity: 1;
+}
+
+.glow-gold {
+  box-shadow: 0 0 40px rgba(212, 195, 154, 0.18), 0 0 0 1px rgba(212, 195, 154, 0.08);
+}
+
+/* Form controls */
+.field-input {
+  width: 100%;
+  background: rgba(242, 237, 228, 0.03);
+  border: 1px solid rgba(242, 237, 228, 0.12);
+  border-radius: 14px;
+  padding: 0.85rem 1rem;
+  color: var(--color-ivory);
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.6;
+  transition: border-color 0.45s var(--ease-luxe), box-shadow 0.45s var(--ease-luxe), background-color 0.45s var(--ease-luxe);
+}
+.field-input::placeholder {
+  color: rgba(242, 237, 228, 0.3);
+}
+.field-input:hover {
+  border-color: rgba(242, 237, 228, 0.22);
+}
+.field-input:focus {
+  outline: none;
+  border-color: rgba(212, 195, 154, 0.7);
+  box-shadow: 0 0 24px rgba(212, 195, 154, 0.12);
+  background: rgba(242, 237, 228, 0.045);
+}
+select.field-input {
+  appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, rgba(212, 195, 154, 0.8) 50%),
+    linear-gradient(135deg, rgba(212, 195, 154, 0.8) 50%, transparent 50%);
+  background-position: calc(100% - 22px) 50%, calc(100% - 16px) 50%;
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
+  padding-right: 3rem;
+}
+select.field-input option {
+  background: #121216;
+  color: #f2ede4;
+}
+
+/* Case reader typography */
+.case-prose table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-body);
+  font-size: 13.5px;
+  font-weight: 300;
+  line-height: 1.55;
+}
+.case-prose th {
+  text-align: left;
+  font-weight: 400;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(212, 195, 154, 0.85);
+  padding: 0.75rem 0.9rem;
+  border-bottom: 1px solid rgba(212, 195, 154, 0.25);
+  vertical-align: bottom;
+  white-space: nowrap;
+}
+.case-prose td {
+  padding: 1.1rem 1rem;
+  border-bottom: 1px solid rgba(242, 237, 228, 0.08);
+  vertical-align: top;
+  color: rgba(242, 237, 228, 0.82);
+}
+.case-prose td:first-child {
+  color: var(--color-ivory);
+  font-weight: 400;
+}
+.case-prose tr:last-child td {
+  border-bottom: none;
+}
+
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(212, 195, 154, 0.3) transparent;
+}

@@ -1,0 +1,47 @@
+import { useNavigate } from 'react-router'
+import { motion } from 'motion/react'
+import Card from '../../components/ui/Card'
+import PageIntro from './PageIntro'
+import { cases } from '../../content/cases'
+
+const ease = [0.22, 1, 0.36, 1] as const
+
+export default function ChooseCase() {
+  const navigate = useNavigate()
+
+  return (
+    <main className="relative mx-auto w-full max-w-5xl px-6 pb-28 pt-12 sm:pt-20">
+      <PageIntro eyebrow="Level 01 · Structural conditions" title="Choose a case">
+        Two simulated patients, each seen several times before anyone put the pattern together. Pick one to read in full.
+      </PageIntro>
+
+      <div className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-2 lg:gap-8">
+        {cases.map((c, i) => (
+          <Card
+            key={c.id}
+            as="button"
+            index={i}
+            onClick={() => navigate(`/structural-conditions/cases/${c.id}/instructions`)}
+            ariaLabel={`Case ${c.number}`}
+            className="group flex h-full w-full flex-col p-8 sm:p-10"
+          >
+            <motion.span
+              className="block font-display text-[2.25rem] font-light leading-tight tracking-[0.03em] text-ivory md:text-[2.5rem]"
+              initial={false}
+              whileHover={{ textShadow: '0 0 18px rgba(212,195,154,0.45)' }}
+              transition={{ duration: 0.45, ease }}
+            >
+              Case {c.number}
+            </motion.span>
+            <span className="mt-6 block font-display text-[1.1rem] italic leading-relaxed text-ivory/85">{c.teaser[0]}</span>
+            <span className="mt-2 block font-body text-[13.5px] font-light leading-relaxed text-ivory-dim">{c.teaser[1]}</span>
+            <span className="mt-8 flex items-center gap-3 font-body text-[10px] uppercase tracking-[0.3em] text-ivory/40 transition-colors duration-500 group-hover:text-gold/80">
+              Select
+              <span className="inline-block transition-transform duration-500 group-hover:translate-x-1">→</span>
+            </span>
+          </Card>
+        ))}
+      </div>
+    </main>
+  )
+}
