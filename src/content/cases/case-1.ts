@@ -53,7 +53,7 @@ export const case1: CaseDoc = {
     },
     {
       type: 'paragraph',
-      text: 'Approximately 4 weeks ago (Day −28) she developed a flu-like prodrome: low-grade fever to 38.1 °C, diffuse headache, malaise, and nausea lasting about 5 days. She missed one week of classes. The headache persisted after the fever resolved. Beginning around Day −21 her roommate noticed she was sleeping only 2–3 hours per night, had become unusually irritable, and was “talking really fast.” She began expressing a fixed belief that her academic advisor was reading her text messages. She did not use any substances beyond occasional alcohol.',
+      text: 'Approximately 4 weeks ago (Day −28) she developed a flu-like prodrome (early symptoms that signal the onset of an illness, before its characteristic features appear): low-grade fever to 38.1 °C, diffuse headache, malaise, and nausea lasting about 5 days. She missed one week of classes. The headache persisted after the fever resolved. Beginning around Day −21 her roommate noticed she was sleeping only 2–3 hours per night, had become unusually irritable, and was “talking really fast.” She began expressing a fixed belief that her academic advisor was reading her text messages. She did not use any substances beyond occasional alcohol.',
     },
     {
       type: 'paragraph',
