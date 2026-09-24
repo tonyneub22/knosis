@@ -2,8 +2,14 @@ import { lazy, Suspense } from 'react'
 import { Route, Routes, Navigate } from 'react-router'
 import Home from './pages/Home'
 import ScrollToTop from './components/ScrollToTop'
+import PrivacyBanner from './components/PrivacyBanner'
 import Layer1Shell from './components/layer1/Layer1Shell'
 import LayerShell from './components/layers/LayerShell'
+
+// Site pages are code-split so the landing page stays light.
+const About = lazy(() => import('./pages/About'))
+const Privacy = lazy(() => import('./pages/Privacy'))
+const Contact = lazy(() => import('./pages/Contact'))
 
 // Layer pages are code-split so the landing page stays light.
 const Overview = lazy(() => import('./pages/layer1/Overview'))
@@ -34,6 +40,13 @@ export default function App() {
       <Suspense fallback={<div className="min-h-[100svh]" aria-busy="true" />}>
         <Routes>
           <Route path="/" element={<Home />} />
+
+          {/* Site pages — About, Privacy, Contact */}
+          <Route element={<LayerShell />}>
+            <Route path="about" element={<About />} />
+            <Route path="privacy" element={<Privacy />} />
+            <Route path="contact" element={<Contact />} />
+          </Route>
 
           {/* Layer 1 — Structural conditions */}
           <Route path={LAYER1_PATH} element={<Layer1Shell />}>
@@ -67,6 +80,7 @@ export default function App() {
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </Suspense>
+      <PrivacyBanner />
     </>
   )
 }

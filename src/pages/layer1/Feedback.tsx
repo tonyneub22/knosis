@@ -248,6 +248,10 @@ export default function Feedback() {
               </Section>
 
               <div className="mt-6 flex flex-col items-center gap-4">
+                <p className="max-w-md text-center font-body text-[12px] leading-relaxed text-ivory-dim">
+                  Your feedback comments, role, and region answers appear on the public results dashboard. Your
+                  name, contact details, and notes are never shown publicly.
+                </p>
                 <Button type="submit" disabled={!roleValid || submitting}>
                   {submitting ? 'Saving' : 'Submit'}
                 </Button>

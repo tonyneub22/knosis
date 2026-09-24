@@ -1,10 +1,44 @@
 import { Link } from 'react-router'
 
 const links: { label: string; href: string }[] = [
-  { label: 'About', href: '#' },
-  { label: 'Contact', href: '#' },
-  { label: 'Privacy', href: '#' },
+  { label: 'About', href: '/about' },
+  { label: 'Contact', href: '/contact' },
+  { label: 'Privacy', href: '/privacy' },
 ]
+
+type PartnerLogo = { src: string; alt: string; height: number; ratio: number }
+
+const partnerLogos: PartnerLogo[] = [
+  { src: '/logos/podocyte-ai.png', alt: 'Podocyte AI', height: 26, ratio: 804 / 100 },
+  { src: '/logos/r69-initiative.png', alt: 'R-69 Initiative', height: 56, ratio: 1141 / 601 },
+  { src: '/logos/kal-research-initiative.png', alt: 'KAL Research Initiative, LLC', height: 56, ratio: 332 / 296 },
+]
+
+/**
+ * Rendered as a solid ivory shape via CSS mask-image (not an <img>), so the logos read as one
+ * monochrome set on the dark footer regardless of their source-file colors.
+ */
+function FooterLogo({ src, alt, height, ratio }: PartnerLogo) {
+  return (
+    <span
+      role="img"
+      aria-label={alt}
+      className="block bg-ivory opacity-55 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:opacity-100 hover:[filter:drop-shadow(0_0_6px_rgba(212,195,154,0.55))_drop-shadow(0_0_18px_rgba(212,195,154,0.35))]"
+      style={{
+        height,
+        aspectRatio: ratio,
+        WebkitMaskImage: `url(${src})`,
+        maskImage: `url(${src})`,
+        WebkitMaskRepeat: 'no-repeat',
+        maskRepeat: 'no-repeat',
+        WebkitMaskSize: 'contain',
+        maskSize: 'contain',
+        WebkitMaskPosition: 'center',
+        maskPosition: 'center',
+      }}
+    />
+  )
+}
 
 export default function Footer() {
   return (
@@ -24,17 +58,25 @@ export default function Footer() {
 
         <nav aria-label="Footer" className="flex items-center gap-8">
           {links.map((l) => (
-            <a
+            <Link
               key={l.label}
-              href={l.href}
+              to={l.href}
               className="font-body text-[11px] uppercase tracking-[0.25em] text-ivory-dim transition-colors duration-500 hover:text-gold"
             >
               {l.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
         <p className="font-body text-[11px] tracking-[0.2em] text-ivory-dim">© 2026 Knosis</p>
+      </div>
+
+      <div className="mx-auto w-full max-w-6xl border-t border-ivory/[0.06] px-6 py-10">
+        <div className="flex flex-col items-center justify-center gap-8 sm:flex-row sm:gap-14">
+          {partnerLogos.map((logo) => (
+            <FooterLogo key={logo.alt} {...logo} />
+          ))}
+        </div>
       </div>
     </footer>
   )

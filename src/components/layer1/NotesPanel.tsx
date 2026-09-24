@@ -43,6 +43,10 @@ export default function NotesPanel({ value, onChange, caseLabel }: Props) {
                 <div>
                   <p className="font-body text-[11px] uppercase tracking-[0.3em] text-gold/80">Your notes</p>
                   <p className="mt-1 font-body text-[11px] text-ivory/35">{caseLabel} · saved on this device</p>
+                  <p className="mt-2 max-w-[15rem] font-body text-[11px] leading-relaxed text-ivory/30">
+                    Please don't include identifiable information about real patients. Your notes are submitted with
+                    your feedback.
+                  </p>
                 </div>
                 <button
                   type="button"
@@ -98,6 +102,10 @@ export default function NotesPanel({ value, onChange, caseLabel }: Props) {
             <span className="h-1 w-10 rounded-full bg-ivory/20" aria-hidden="true" />
           </button>
           <div id="mobile-notes" className="flex flex-1 flex-col px-5 pb-6">
+            <p className="mb-3 font-body text-[11px] leading-relaxed text-ivory/30">
+              Please don't include identifiable information about real patients. Your notes are submitted with your
+              feedback.
+            </p>
             {textarea}
           </div>
         </motion.div>
