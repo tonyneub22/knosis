@@ -8,7 +8,7 @@ import type { Factor } from './factorTypes'
 export const layer1 = {
   number: 1,
   title: 'Structural Conditions',
-  subtitle: 'Who gets believed, who can reach care, and the fact that none of this is counted.',
+  subtitle: 'What are the constraints or biases that exist before any specific patient walks into a medical setting? What disparities are evidence of such constraints or biases?',
   scope: 'Operates over populations and years; present before any specific patient walks in.',
   band: 'Widest band, top of the pyramid.',
 }
@@ -66,7 +66,7 @@ export const layer1Factors: Factor[] = [
     title: 'Detection and reporting bias',
     teaser: 'Errors are detected mainly through return visits, autopsy, malpractice claims, and voluntary reports — all of which under-count.',
     mechanism:
-      'Errors are detected mainly through return visits, autopsy, malpractice claims, and voluntary reports — all of which under-count. The AHRQ overall ED rate was derived from only three prospective studies (n = 1,758) outside the US, which is why it was contested by emergency-medicine organizations.',
+      'Errors are detected mainly through return visits, autopsy, malpractice claims, and voluntary reports — all of which under-count. The AHRQ overall ED rate was derived from only three prospective studies (n = 1,758) outside the US, which is why it was contested by emergency-medicine organizations. Errors are also detected often using triggers and research set-ups that exist on a ~6mo timescale. Some work goes out to two years but the diagnostic odyssey in rare disease is well documented as being much longer than the typical duration of a study of diagnostic error.',
     estimate:
       'Autopsy series historically show 8.4–24.4% major diagnostic discrepancies. Retrospective radiology discrepancy rates (~30%) far exceed real-time rates (3–5%).',
     strength: 'Strong that under-counting exists; magnitude uncertain.',

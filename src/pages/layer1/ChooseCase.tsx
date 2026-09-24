@@ -11,11 +11,19 @@ export default function ChooseCase() {
 
   return (
     <main className="relative mx-auto w-full max-w-5xl px-6 pb-28 pt-12 sm:pt-20">
-      <PageIntro eyebrow="Level 01 · Structural conditions" title="Choose a case">
-        Two simulated patients, each seen several times before anyone put the pattern together. Pick one to read in full.
-      </PageIntro>
+      <PageIntro eyebrow="Level 01 · Structural conditions" title="Choose a case" />
 
-      <div className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-2 lg:gap-8">
+      <motion.p
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.9, delay: 0.15, ease }}
+        className="mt-8 text-center font-display text-[1.05rem] tracking-[0.18em] text-ivory-dim"
+        style={{ textShadow: '0 0 20px rgba(212,195,154,0.28)' }}
+      >
+        Powered by the R69 Initiative
+      </motion.p>
+
+      <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:gap-8">
         {cases.map((c, i) => (
           <Card
             key={c.id}
