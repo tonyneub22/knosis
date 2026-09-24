@@ -13,7 +13,7 @@ const points = [
   },
   {
     k: 'Several prior visits, none resolved',
-    v: 'This patient has been seen before. Each earlier encounter reached a working diagnosis, and none of them was right. Read the case in the order it is presented — the prior visits, the examination, the studies, the assessment.',
+    v: 'Read the case in the order it is presented — the prior visits, the examination, the studies, the assessment.',
   },
   {
     k: 'Keep notes as you go',
@@ -21,7 +21,7 @@ const points = [
   },
   {
     k: 'Then rate and reflect',
-    v: 'When you reach the end, you will be asked to rate the level of severity and to give feedback on the framework itself.',
+    v: 'When you reach the end, you will be asked to rate the level of diagnostic severity and to give feedback on the framework itself.',
   },
 ]
 

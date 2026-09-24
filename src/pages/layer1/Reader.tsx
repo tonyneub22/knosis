@@ -34,7 +34,7 @@ export default function Reader() {
 
           <div className="mt-20 flex flex-col items-center gap-5 border-t border-ivory/[0.08] pt-14 text-center">
             <p className="font-body text-[11px] uppercase tracking-[0.3em] text-gold/80">End of case</p>
-            <p className="max-w-md font-body text-[14px] font-light leading-relaxed text-ivory-dim">Next, rate the level of severity. Your notes come with you.</p>
+            <p className="max-w-md font-body text-[14px] font-light leading-relaxed text-ivory-dim">Next, rate the level of diagnostic severity. Your notes come with you.</p>
             <div className="mt-4">
               <Button to={`/structural-conditions/cases/${doc.id}/severity`}>Continue</Button>
             </div>
