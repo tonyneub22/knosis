@@ -11,17 +11,9 @@ export default function ChooseCase() {
 
   return (
     <main className="relative mx-auto w-full max-w-5xl px-6 pb-28 pt-12 sm:pt-20">
-      <PageIntro eyebrow="Level 01 · Structural conditions" title="Choose a case" />
-
-      <motion.p
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.9, delay: 0.15, ease }}
-        className="mt-8 text-center font-display text-[1.05rem] tracking-[0.18em] text-ivory-dim"
-        style={{ textShadow: '0 0 20px rgba(212,195,154,0.28)' }}
-      >
-        Powered by the R69 Initiative
-      </motion.p>
+      <PageIntro eyebrow="Level 01 · Structural conditions" title="Diagnostic Uncertainty Severity Index (DUSI)">
+        Choose a Case
+      </PageIntro>
 
       <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:gap-8">
         {cases.map((c, i) => (
@@ -50,6 +42,20 @@ export default function ChooseCase() {
           </Card>
         ))}
       </div>
+
+      <motion.a
+        href="https://www.r69initiative.org/"
+        target="_blank"
+        rel="noopener noreferrer"
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.9, delay: 0.15, ease }}
+        whileHover={{ textShadow: '0 0 28px rgba(212,195,154,0.75)' }}
+        className="mt-16 block text-center font-display text-[1.05rem] tracking-[0.18em] text-ivory-dim transition-colors duration-500 hover:text-gold/90"
+        style={{ textShadow: '0 0 20px rgba(212,195,154,0.28)' }}
+      >
+        Powered by the R69 Initiative
+      </motion.a>
     </main>
   )
 }
