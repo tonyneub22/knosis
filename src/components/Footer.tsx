@@ -6,36 +6,66 @@ const links: { label: string; href: string }[] = [
   { label: 'Privacy', href: '/privacy' },
 ]
 
-type PartnerLogo = { src: string; alt: string; height: number; ratio: number }
+type PartnerLogo = { src: string; alt: string; height: number; ratio: number; href?: string }
 
 const partnerLogos: PartnerLogo[] = [
   { src: '/logos/podocyte-ai.png', alt: 'Podocyte AI', height: 26, ratio: 804 / 100 },
-  { src: '/logos/r69-initiative.png', alt: 'R-69 Initiative', height: 56, ratio: 1141 / 601 },
-  { src: '/logos/kal-research-initiative.png', alt: 'KAL Research Initiative, LLC', height: 56, ratio: 332 / 296 },
+  {
+    src: '/logos/r69-initiative.png',
+    alt: 'R-69 Initiative',
+    height: 56,
+    ratio: 1141 / 601,
+    href: 'https://www.r69initiative.org/',
+  },
+  {
+    src: '/logos/kal-research-initiative.png',
+    alt: 'KAL Research Initiative, LLC',
+    height: 56,
+    ratio: 332 / 296,
+    href: 'https://www.kalresearchinitiatives.com/',
+  },
 ]
 
 /**
  * Rendered as a solid ivory shape via CSS mask-image (not an <img>), so the logos read as one
  * monochrome set on the dark footer regardless of their source-file colors.
  */
-function FooterLogo({ src, alt, height, ratio }: PartnerLogo) {
+function FooterLogo({ src, alt, height, ratio, href }: PartnerLogo) {
+  const shapeClass =
+    'block bg-ivory opacity-55 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:opacity-100 group-hover:[filter:drop-shadow(0_0_6px_rgba(212,195,154,0.55))_drop-shadow(0_0_18px_rgba(212,195,154,0.35))]'
+  const shapeStyle = {
+    height,
+    aspectRatio: ratio,
+    WebkitMaskImage: `url(${src})`,
+    maskImage: `url(${src})`,
+    WebkitMaskRepeat: 'no-repeat',
+    maskRepeat: 'no-repeat',
+    WebkitMaskSize: 'contain',
+    maskSize: 'contain',
+    WebkitMaskPosition: 'center',
+    maskPosition: 'center',
+  } as const
+
+  if (href) {
+    return (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={alt}
+        className="group block outline-none focus-visible:[filter:drop-shadow(0_0_8px_rgba(212,195,154,0.6))]"
+      >
+        <span aria-hidden="true" className={shapeClass} style={shapeStyle} />
+      </a>
+    )
+  }
+
   return (
     <span
       role="img"
       aria-label={alt}
-      className="block bg-ivory opacity-55 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:opacity-100 hover:[filter:drop-shadow(0_0_6px_rgba(212,195,154,0.55))_drop-shadow(0_0_18px_rgba(212,195,154,0.35))]"
-      style={{
-        height,
-        aspectRatio: ratio,
-        WebkitMaskImage: `url(${src})`,
-        maskImage: `url(${src})`,
-        WebkitMaskRepeat: 'no-repeat',
-        maskRepeat: 'no-repeat',
-        WebkitMaskSize: 'contain',
-        maskSize: 'contain',
-        WebkitMaskPosition: 'center',
-        maskPosition: 'center',
-      }}
+      className={shapeClass.replace(/group-hover:/g, 'hover:')}
+      style={shapeStyle}
     />
   )
 }
