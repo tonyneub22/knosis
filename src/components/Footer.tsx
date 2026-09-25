@@ -1,4 +1,5 @@
 import { Link } from 'react-router'
+import podocyteLogo from '../assets/brand/podocyte-ai-logo.png'
 
 const links: { label: string; href: string }[] = [
   { label: 'About', href: '/about' },
@@ -8,8 +9,7 @@ const links: { label: string; href: string }[] = [
 
 type PartnerLogo = { src: string; alt: string; height: number; ratio: number; href?: string }
 
-const partnerLogos: PartnerLogo[] = [
-  { src: '/logos/podocyte-ai.png', alt: 'Podocyte AI', height: 26, ratio: 804 / 100 },
+const monochromeLogos: PartnerLogo[] = [
   {
     src: '/logos/r69-initiative.png',
     alt: 'R-69 Initiative',
@@ -70,6 +70,20 @@ function FooterLogo({ src, alt, height, ratio, href }: PartnerLogo) {
   )
 }
 
+/**
+ * Podocyte AI's own mark, kept in its original color (unlike the monochrome-masked partner
+ * logos above) — source is a raster PDF export, see src/assets/brand/podocyte-ai-logo.png.
+ */
+function PodocyteLogo() {
+  return (
+    <img
+      src={podocyteLogo}
+      alt="Podocyte AI"
+      className="block h-[26px] w-auto opacity-55 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:opacity-100 hover:[filter:drop-shadow(0_0_6px_rgba(212,195,154,0.55))_drop-shadow(0_0_18px_rgba(212,195,154,0.35))]"
+    />
+  )
+}
+
 export default function Footer() {
   return (
     <footer className="border-t border-ivory/[0.08]">
@@ -103,7 +117,8 @@ export default function Footer() {
 
       <div className="mx-auto w-full max-w-6xl border-t border-ivory/[0.06] px-6 py-10">
         <div className="flex flex-col items-center justify-center gap-8 sm:flex-row sm:gap-14">
-          {partnerLogos.map((logo) => (
+          <PodocyteLogo />
+          {monochromeLogos.map((logo) => (
             <FooterLogo key={logo.alt} {...logo} />
           ))}
         </div>
