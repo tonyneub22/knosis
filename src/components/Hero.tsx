@@ -51,12 +51,16 @@ export default function Hero() {
           <Logo size={88} />
         </motion.div>
 
-        <motion.p
+        <motion.a
+          href="https://www.podocyte-ai.com"
+          target="_blank"
+          rel="noopener noreferrer"
           variants={item}
-          className="font-display text-[0.95rem] text-ivory-dim tracking-[0.18em] pl-[0.18em]"
+          className="font-display text-[0.95rem] text-ivory-dim tracking-[0.18em] pl-[0.18em] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:text-gold/90 hover:[text-shadow:0_0_22px_rgba(212,195,154,0.6)]"
+          style={{ textShadow: '0 0 14px rgba(212,195,154,0.25)' }}
         >
           Powered by Podocyte AI
-        </motion.p>
+        </motion.a>
       </motion.div>
 
       <ScrollCue />
