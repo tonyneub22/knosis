@@ -76,11 +76,13 @@ function FooterLogo({ src, alt, height, ratio, href }: PartnerLogo) {
  */
 function PodocyteLogo() {
   return (
-    <img
-      src={podocyteLogo}
-      alt="Podocyte AI"
-      className="block h-[26px] w-auto opacity-55 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:opacity-100 hover:[filter:drop-shadow(0_0_6px_rgba(212,195,154,0.55))_drop-shadow(0_0_18px_rgba(212,195,154,0.35))]"
-    />
+    <a href="https://www.podocyte-ai.com" target="_blank" rel="noopener noreferrer">
+      <img
+        src={podocyteLogo}
+        alt="Podocyte AI"
+        className="block h-[26px] w-auto opacity-55 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:opacity-100 hover:[filter:drop-shadow(0_0_6px_rgba(212,195,154,0.55))_drop-shadow(0_0_18px_rgba(212,195,154,0.35))]"
+      />
+    </a>
   )
 }
 
@@ -95,9 +97,15 @@ export default function Footer() {
           >
             Knosis
           </Link>
-          <span className="font-display text-sm tracking-[0.15em] text-ivory-dim">
+          <a
+            href="https://www.podocyte-ai.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-display text-sm tracking-[0.15em] text-ivory-dim transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:text-gold/90 hover:[text-shadow:0_0_22px_rgba(212,195,154,0.6)]"
+            style={{ textShadow: '0 0 14px rgba(212,195,154,0.25)' }}
+          >
             Powered by Podocyte AI
-          </span>
+          </a>
         </div>
 
         <nav aria-label="Footer" className="flex items-center gap-8">
